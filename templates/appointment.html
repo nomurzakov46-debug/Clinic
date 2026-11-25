@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="appointment-wrapper">
+    <div class="appointment-card">
+        
+        
+        <a href="/" class="appointment-close">×</a>
+
+        {% if success %}
+            
+            <div class="appointment-success">
+                <div class="success-icon">✓</div>
+                <p class="success-text">Ваша заявка принята, в ближайшее время специалист Вам перезвонит</p>
+                <a href="{% url 'home'  %}" class="back_home">На Главную <</a>
+            </div>
+        {% else %}
+            
+            <h2 class="appointment-title">Запись на прием</h2>
+            <form method="post" class="appointment-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn-submit">Записаться</button>
+            </form>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
+

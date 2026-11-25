@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="about_reviews">
+    <div class="container">
+        <h2>Отзывы наших пациентов</h2>
+        <div class="about_reviews__list">
+            {% for review in reviews %}
+                <div class="review_card">
+                    <h3>{{ review.author }}</h3>
+                    <p>Оценка: {{ review.rating }}/5</p>
+                    <p>{{ review.text }}</p>
+                    <p>Врач: {{ review.doctor.full_name }}</p>
+                    <p>{{ review.created_at|date:"d.m.Y" }}</p>
+                </div>
+            {% empty %}
+                <p>Отзывов пока нет.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% include 'callback_block.html' %}
+{% endblock %}

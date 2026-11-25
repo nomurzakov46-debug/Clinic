@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваш доктор рядом</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+        <div class="header_top">
+        <div class="container_top">
+         <span class="btn-2">Сеть клиник Томской области</span>
+         <a href="#" class="t1">Версия для слабовидящих</a>
+         <div class="header_right">
+          <a href="tel:+79780000000">+7 (978) 00-00-000</a>
+         <a href="{% url 'appointment_create' %}" class="btn-1">Записаться на приём</a>
+         </div>
+        </div>
+     </div>
+
+    <div class="container_nav">
+    <a href="/" class="logo1"><img src="{% static 'img/logo.png' %}" alt="Ваш доктор рядом"></a>
+     <nav class="nav-menu">
+    <a href="{% url 'doctor_list' %}" class="nav-link">Врачи</a>
+    <a href="{% url 'service' %}" class="nav-link">Услуги</a>
+    <a href="{% url 'diagnostic' %}" class="nav-link">Диагностика</a>
+    <a href="{% url 'analyses' %}" class="nav-link">Анализы</a>
+    <a href="{% url 'promotion_list' %}" class="nav-link">Акции</a>
+    <a href="{% url 'patients' %}" class="nav-link">Пациентам</a>
+    <a href="{% url 'about' %}" class="nav-link">О клинике</a>
+    <a href="{% url 'review_plural' %}" class="nav-link">Отзывы</a>
+    <a href="{% url 'contacts' %}" class="nav-link">Контакты</a>
+</nav>
+
+
+    </div>
+        </div>
+     
+    </header>
+    <main>
+        <div class="container">
+            <a href="{% url 'home'  %}" class="back_home">На Главную <</a>
+        </div>
+        {% block content %} {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+
+            <div class="footer__info">
+                <img src="{% static 'img/logo.png' %}" alt="Ваш доктор рядом" class="footer__logo">
+                <p class="footer__label">Адрес</p>
+                <p>Москва, ул. Пушкина, д.43</p>
+                <p class="footer__label">Телефон</p>
+                <p>+7 (9__) ___-__-__</p>
+                <p class="footer__label">Почта</p>
+                <p>Poshta@gmail.com</p>
+            </div>
+
+            <div class="footer__col">
+                    <a href="{% url 'about' %}" class="nav-link">О клинике</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+            </div>
+
+            <div class="footer__col">
+                    <a href="{% url 'doctor_list' %}" class="nav-link">Врачи</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+            </div>
+
+            <div class="footer__col">
+                   <a href="{% url 'patients' %}" class="nav-link">Пациентам</a>
+                <a href="{% url 'oms' %}">Лучуние по ОМС</a>
+                <a href="{% url 'dms' %}">ДМС</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+            </div>
+
+            <div class="footer__col">
+                     <a href="{% url 'service' %}" class="nav-link">Услуги</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+                <a href="#">Название пункта меню</a>
+            </div>
+
+        </div>
+    </footer>
+    
+</body>
+</html>

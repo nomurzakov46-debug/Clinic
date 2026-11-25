@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/home.css'    %}">
+{% endblock %}
+
+{% block content %}
+<section class="tere_are_doctors">
+<div class="container">
+<h2>Инофрмация о враче</h2>
+<div class="doctor_list ">
+            
+                <div class="doctor_card">
+                    {% if doctor.photo %}
+                    <img src="{{ doctor.photo.url }}" alt="{{ doctor.full_name }}" class="doctor-card__img">
+                {% endif %}
+                    <h3>{{ doctor.full_name }}</h3>
+                    <p>{{ doctor.position }}</p>
+                    <h4>
+                        {{ doctor.direction }}
+                    </h4>
+                    <h4>
+                        {{doctor.experience}}
+                    </h4>
+                    <p>
+                        {{doctor.description}}
+                    </p>
+                </div>
+            
+        </div>
+</div>
+</section>
+{% endblock %}

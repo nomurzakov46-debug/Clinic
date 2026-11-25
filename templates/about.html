@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="about_top">
+    <div class="container">
+        <h1>О клинике</h1>
+        
+    </div>
+</section>
+
+<section class="timeline">
+    <div class="container">
+        {% for event in events %}
+            <div class="timeline_item">
+                <span class="timeline_year">{{ event.year }}</span>
+                <p>{{ event.text }}</p>
+            </div>
+        {% empty %}
+            <p>История пока не добавлена.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="about_reviews">
+    <div class="container">
+        <h2>Отзывы наших пациентов</h2>
+        <div class="about_reviews__list">
+            {% for review in reviews %}
+                <div class="review_card">
+                    <h3>{{ review.author }}</h3>
+                    <p>Оценка: {{ review.rating }}/5</p>
+                    <p>{{ review.text }}</p>
+                    <p>Врач: {{ review.doctor.full_name }}</p>
+                    <p>{{ review.created_at|date:"d.m.Y" }}</p>
+                </div>
+            {% empty %}
+                <p>Отзывов пока нет.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="licenses">
+<div class="container">
+<h2>Наши лицензии</h2>
+
+<div class="licenses__list"> 
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+</div>
+</div>
+</section>
+
+{% include 'callback_block.html' %}
+
+{% endblock %}

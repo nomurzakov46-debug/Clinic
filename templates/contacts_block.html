@@ -1,0 +1,18 @@
+{% load static  %}
+
+<section class="contacts">
+<div class="container contacts__inner">
+    
+<div class="contacts__info">
+<h2>Наши контакты </h2>
+<p class="label">Адрес</p>
+<p>г. Томск, ул. 79 Гвардейской дивизии, 6</p>
+<p class="contacts__label">Телефон</p>
+<p>8 (3822) 50-00-49</p>
+<p class="contacts__label">Почта</p>
+<p>info@docnear.ru</p>
+<a href="{% url 'appointment_create' %}" class="btn-1">Записаться на приём</a>
+</div>
+<img src="{% static 'img/map.png'   %}" alt="" class="contacts__map">
+</div>
+</section>

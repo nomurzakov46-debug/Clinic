@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="an_ahead">
+    <div class="container">
+        <h1>Анализы</h1>
+        <div class="an_promos">
+    {% for promo in promos %}
+        <div class="an_promo an_promo--{{ promo.color }}">
+            <div class="an_promo__text">
+                <h3>{{ promo.title }}</h3>
+                <p>{{ promo.text }}</p>
+                <span>Акция действует до</span>
+                <strong>{{ promo.end_date|date:"d.m.Y" }}</strong>
+                <a href="#" class="btn-1 btn--white">Подробнее ></a>
+            </div>
+            <img src="{{ promo.image.url }}" alt="{{ promo.title }}" class="an_promo__img">
+        </div>
+    {% endfor %}
+</div>
+    </div>
+</section>
+
+<section class="oms_steps">
+    <div class="container">
+        <h2>Как получить лечение?</h2>
+        <div class="oms_steps_list">
+            <div class="oms_step">
+                <span class="step_num">1</span>
+                <img src="{% static 'img/step1.png' %}" alt="">
+                <p>Узнайте, входит ли интересующее вас лечение в программу для вашего региона</p>
+            </div>
+
+            <div class="oms_step">
+                <span class="step_num">2</span>
+                <img src="{% static 'img/step1.png' %}" alt="">
+                <p>Подготовьте необходимые документы и отправьте заявку на лечение.</p>
+            </div>
+            <div class="oms_step">
+                <span class="step_num">3</span>
+                <img src="{% static 'img/step1.png' %}" alt="">
+                <p>В течение 3-х рабочих дней специалист отдела ОМС свяжется с вами по указанному вами номеру телефона</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="an_popular">
+    <div class="container">
+        <h2>Популярные анализы</h2>
+        <div class="an_popular__list">
+
+            <div class="an_cat">
+                <img src="{% static 'img/an_ickon1.png' %}" alt="" class="an_cat__icon">
+                <h3>Онкология</h3>
+                <ul>
+                    <li>Гистология</li>
+                    <li>Онкомаркёры</li>
+                    <li>Цитология</li>
+                </ul>
+            </div>
+
+            <div class="an_cat">
+                <img src="{% static 'img/an_ickon1.png' %}" alt="" class="an_cat__icon">
+                <h3>Исследования крови</h3>
+                <ul>
+                    <li>Клинические исследования</li>
+                    <li>Биохимия</li>
+                    <li>Иммунология</li>
+                    <li>Гормоны</li>
+                </ul>
+            </div>
+
+            <div class="an_cat">
+                <img src="{% static 'img/an_ickon1.png' %}" alt="" class="an_cat__icon">
+                <h3>Исследования мочи</h3>
+                <ul>
+                    <li>Биохимический анализ мочи</li>
+                    <li>Общий анализ мочи</li>
+                    <li>Гормоны</li>
+                </ul>
+            </div>
+
+            <div class="an_cat">
+                <img src="{% static 'img/an_ickon1.png' %}" alt="" class="an_cat__icon">
+                <h3>Аллергии</h3>
+                <ul>
+                    <li>Аллергокомпоненты</li>
+                    <li>Индивидуальные аллергены</li>
+                    <li>Аллергия на лекарства</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="an_dark">
+    <div class="container an_dark__inner">
+        <div class="an_dark__text">
+            <h2>Виды лабораторных анализов и исследований</h2>
+            <ul class="an_dark__list">
+                <li>Общие исследования крови</li>
+                <li>Биохимические исследования крови</li>
+                <li>Онкомаркёры</li>
+                <li>Общеклинические исследования кала</li>
+                <li>Панели аллергенов</li>
+                <li>Гистологические исследования</li>
+                <li>Гормональные исследования крови</li>
+                <li>Исследования мочи</li>
+                <li>Иммунологические исследования крови</li>
+                <li>Гематологические исследования</li>
+                <li>Аллергологические исследования</li>
+                <li>Исследования кала</li>
+                <li>Аутоиммунные заболевания</li>
+                <li>Исследование спермы</li>
+                <li>Генетический анализ</li>
+                <li>Исследования крови на инфекции</li>
+                <li>Цитологические исследования</li>
+                <li>Исследования инфекционных заболеваний</li>
+            </ul>
+        </div>
+        <img src="{% static 'img/nurse.png' %}" alt="Медсестра" class="an_dark__img">
+    </div>
+</section>
+
+<section class="licenses">
+<div class="container">
+<h2>Наши лицензии</h2>
+
+<div class="licenses__list"> 
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+</div>
+</div>
+</section>
+{% include 'callback_block.html' %}
+{% endblock %}

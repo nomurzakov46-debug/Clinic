@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="patients-section">
+  <h1 class="patients-title">Пациентам</h1>
+  
+  <div class="patients-cards">
+    <a href="{% url 'oms' %}" class="patient-card">
+      <div class="patient-card__badge">Бесплатно по полису</div>
+      <h2 class="patient-card__title">Лечение по ОМС</h2>
+      <p class="patient-card__text">Условия получения бесплатной медицинской помощи, список документов и порядок записи.</p>
+      <span class="patient-card__link">Подробнее →</span>
+    </a>
+
+    <a href="{% url 'dms' %}" class="patient-card">
+      <div class="patient-card__badge">Страховые программы</div>
+      <h2 class="patient-card__title">ДМС</h2>
+      <p class="patient-card__text">Информация об обслуживании по полисам добровольного медицинского страхования.</p>
+      <span class="patient-card__link">Подробнее →</span>
+    </a>
+
+    <a href="{% url 'info' %}" class="patient-card">
+      <div class="patient-card__badge">Документы и лицензии</div>
+      <h2 class="patient-card__title">Нормативно-правовая информация</h2>
+      <p class="patient-card__text">Лицензии клиники, законы об охране здоровья граждан, права и обязанности пациентов.</p>
+      <span class="patient-card__link">Подробнее →</span>
+    </a>
+  </div>
+</section>
+{% endblock %}

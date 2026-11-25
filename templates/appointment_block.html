@@ -1,0 +1,36 @@
+<section class="appoitment">
+  <div class="container">
+    <h2>Запись на приём</h2>
+    
+    <form method="post" action="{% url 'appointment_create' %}">
+      {% csrf_token %}
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="id_full_name">Ваше ФИО</label>
+          <input type="text" id="id_full_name" name="full_name" placeholder="Иванов Иван Иванович" required>
+        </div>
+
+        <div class="form-group">
+          <label for="id_phone">Номер телефона</label>
+          <input type="tel" id="id_phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+        </div>
+
+        <div class="form-group">
+          <label for="id_direction">Выберите направление</label>
+          <select id="id_direction" name="direction">
+            {% for d in directions %}
+              <option value="{{ d.pk }}">{{ d.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button type="submit" class="btn-1">Записаться на приём</button>
+      </div>
+
+      <p class="privacy-text">
+        Нажимая на кнопку Записаться на приём вы соглашаетесь с <a href="#">политикой конфиденциальности</a>
+      </p>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/home.css'  %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+<section class="dir_when">
+<div class="container">
+<h2>Когда нужно обратиться к специалисту?</h2>
+<div class="dir_when__item">
+<h3>Название симптома</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus vitae aenean amet nibh lacus, habitasse fermentum, donec id. Nisl, mollis dolor nec id volutpat quis. Tempus suspendisse
+ipsum vitae rhoncus scelerisque sed. Et lacinia eget eros duis purus, tortor id senectus tristique. </p>
+
+</div>
+<div class="dir_when__item">
+<h3>Название симптома</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus vitae aenean amet nibh lacus, habitasse fermentum, donec id. Nisl, mollis dolor nec id volutpat quis. Tempus suspendisse
+ipsum vitae rhoncus scelerisque sed. Et lacinia eget eros duis purus, tortor id senectus tristique. </p>
+
+</div>
+<div class="dir_when__item">
+<h3>Название симптома</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus vitae aenean amet nibh lacus, habitasse fermentum, donec id. Nisl, mollis dolor nec id volutpat quis. Tempus suspendisse
+ipsum vitae rhoncus scelerisque sed. Et lacinia eget eros duis purus, tortor id senectus tristique. </p>
+
+</div>
+</div>
+</section>
+
+
+<section class="dir_doctors">
+<div class="container">
+<h2>Наши специалисты</h2>
+{% for doctor in direction.doctors.all %}
+    <div class="dir_doctor">
+        {% if doctor.photo   %}
+        <img src="{{ doctor.photo.url   }}" alt="">
+        {% endif %}
+        <h3>
+            {{ doctor.full_name }}
+        </h3>
+        <p>
+            {{doctor.position}}
+        </p>
+        <p>
+            {{ doctor.description }}
+        </p>
+        <a href="{% url 'appointment_create' %}" class="btn-1">Запись на прием</a>
+    </div>
+    {% empty %}
+    <p>Врачи не добавлены</p>
+    {% endfor %}
+</div>
+</section>
+
+<section class="oms_steps">
+    <div class="container">
+        <h2>Как получить лечение?</h2>
+        <div class="oms_steps_list">
+            <div class="oms_step">
+                <span class="step_num">1</span>
+                <img src="{% static 'img/step1.png' %}" alt="">
+                <p>Узнайте, входит ли интересующее вас лечение в программу для вашего региона</p>
+            </div>
+
+            <div class="oms_step">
+                <span class="step_num">2</span>
+                <img src="{% static 'img/step1.png' %}" alt="">
+                <p>Подготовьте необходимые документы и отправьте заявку на лечение.</p>
+            </div>
+            <div class="oms_step">
+                <span class="step_num">3</span>
+                <img src="{% static 'img/step1.png' %}" alt="">
+                <p>В течение 3-х рабочих дней специалист отдела ОМС свяжется с вами по указанному вами номеру телефона</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="dir_reviews">
+    <div class="container">
+        <div class="reviews_head">
+            <h2>Отзывы наших пациентов</h2>
+            <div class="reviews_arrows">
+                <button type="button" class="arrow_btn arrow_prev">&lt;</button>
+                <button type="button" class="arrow_btn arrow_next">&gt;</button>
+            </div>
+        </div>
+
+        <div class="reviews_grid">
+            {% for review in reviews %}
+                <div class="review_card">
+                    <h3>{{ review.author }}</h3>
+                    
+                    <div class="review_stars">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= review.rating %}
+                                <span class="star filled">★</span>
+                            {% else %}
+                                <span class="star">★</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <p class="review_text">{{ review.text }}</p>
+                    
+                    <div class="review_meta">
+                        <p class="review_date">{{ review.created_at|date:"d.m.Y" }}</p>
+                        {% if review.doctor %}
+                            <p class="review_doctor">
+                                Врач: <a href="#">{{ review.doctor.full_name }}</a>
+                            </p>
+                        {% endif %}
+                        <a href="#" class="review_more">Читать полностью</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>Отзывов пока нет.</p>
+            {% endfor %}
+        </div>
+
+        <div class="reviews_footer">
+            <a href="#" class="btn_outline">Все отзывы</a>
+        </div>
+    </div>
+</section>
+
+{% include 'callback_block.html' %}
+{% endblock %}

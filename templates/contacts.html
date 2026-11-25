@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include 'contacts_block.html' %}
+
+
+
+
+
+<section class="doctors">
+    <div class="container">
+        <h2>Наши специалисты</h2>
+        <div class="doctor_list doctor_list--all">
+            {% for doctor in doctors %}
+                <div class="doctor_card">
+                    {% if doctor.photo %}
+                        <img src="{{ doctor.photo.url }}" alt="{{ doctor.full_name }}" class="doctor-card__img">
+                    {% endif %}
+                    <h3>{{ doctor.full_name }}</h3>
+                    <p>{{ doctor.position }}</p>
+                    <a href="{% url 'appointment_create' %}" class="btn-001">Запись на приём</a>
+                    <a href="{% url 'doctor_detail' doctor.pk %}" class="btn--outline">Подробнее</a>
+                </div>
+            {% empty %}
+                <p>Врачи не добавлены</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+
+{% include 'callback_block.html' %}
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+<section class="call">
+    <div class="container">
+        <div class="call__box">
+            <div class="call__content">
+                <h2>Хотите, мы Вам перезвоним?</h2>
+                <p class="call__text">Оставьте заявку и мы подробно ответим на все Ваши вопросы!</p>
+
+                <form method="post" action="{% url 'callback_create' %}">
+                    {% csrf_token %}
+                    <div class="call__fields">
+                        <div class="call__field">
+                            <label>Ваше ФИО</label>
+                            <input type="text" name="full_name" placeholder="Иванов Иван Иванович">
+                        </div>
+                        <div class="call__field">
+                            <label>Номер телефона</label>
+                            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-1">Заказать звонок</button>
+                </form>
+
+                <p class="call__policy">Нажимая на кнопку «Заказать звонок» вы соглашаетесь с политикой конфиденциальности</p>
+            </div>
+            <img src="{% static 'img/doctor02.png' %}" alt="" class="call__img">
+        </div>
+    </div>
+</section>

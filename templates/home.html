@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block content %}
+
+<section class="banner">
+<div class="container banner__inner">
+<div class="home_left1">
+<h1 >Lorem ipsum dolor sit amet, consectetur</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+     Viverra amet dolor sed mi tincidunt pharetra montes.
+     Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+     Viverra amet dolor sed mi tincidunt pharetra montes.</p>
+
+<a href="#" class="btn-1 btn--white">Подробнее > </a>
+</div>
+
+<div class="home_right1">
+ <a href="/" ><img src="{% static 'img/image1.png' %}" alt="" class="image01"></a>
+</div>
+
+</div>
+</section>
+
+<section class="banner2">
+ <div class="container banner__inner2">
+<div class="home_left2">
+<h1>Немного о нас</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum diam pretium risus, ultrices felis a. Adipiscing maecenas mattis ullamcorper magnis eget varius. At lobortis tristique mattis orci aenean. Pretium, posuere tristique id potenti ac. Ac praesent arcu vitae arcu. Velit ut et, leo, augue bibendum euismod in. Turpis massa, commodo vestibulum bibendum amet orci velit, risus. Semper mauris curabitur auctor id amet mauris lacus. Ut quis nisi, ac consequat sed massa egestas. Sed adipiscing scelerisque enim, id amet eget. Ipsum dui a bibendum quisque in.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum diam pretium risus, ultrices felis a. Adipiscing maecenas mattis ullamcorper magnis eget varius. At lobortis tristique mattis orci aenean. Pretium, posuere tristique id potenti ac.</p>
+</div>
+
+<div class="home_right2">
+ <a href="/" ><img src="{% static 'img/image2.png' %}" alt="" class="image02"></a>
+</div>
+</div>
+</section>
+
+<section class="directions">
+<div class="container">
+<div class="direction_head">
+<h2>Направления нашей работы</h2>
+<a href="{% url 'direction_list'  %}" class="btn-1"> Все направления ></a>
+</div>
+
+<div class="direction_list direction_list--all">
+    {% for direction in directions %}
+        <div class="card">
+            <img src="{{ direction.image.url }}" alt="{{ direction.name }}" class="card_img">
+            <div class="card_body">
+                <h3>{{ direction.name }}</h3>
+                <a href="{% url 'direction_detail' direction.slug  %}">Подробнее</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</div>
+</section>
+
+<section class="doctors">
+<div class="container">
+<div class="doctors_head">
+<h2>Наши специалисты</h2>
+</div>
+<div class="doctor_list">
+  {% for doctor in doctors  %}
+  <div class="doctor_card">
+  <img src="{{ doctor.photo.url }}" alt="" class="doctor-card__img">
+  <h3>
+    {{ doctor.full_name }}
+  </h3>
+  <p>
+    {{ doctor.position }}
+  </p>
+  <a href="{% url 'appointment_create'  %}" class="btn-3">Запись на приём</a>
+  </div>
+  {% endfor %}
+</div>
+</div>
+<a href="{% url 'doctor_list' %}" class="doctors_all">Все специалисты</a>
+</section>
+
+<section class="promotion_grid">
+<div class="container">
+<h2>Наши акции</h2>
+<div class="promos_grid">
+
+{% if big_promo %}
+  <div class="promo promo--big">
+<h3>
+  {{ big_promo.title }}
+</h3>
+<p>
+  {{ big_promo.text }}
+</p>
+<span>Акция действует до 
+  {{ big_promo.end_date|date:"d.m.Y" }}
+</span>
+<a href="#" class=" btn--white_01">Подробнее ></a>
+<img src="{{ big_promo.image.url }}" alt="" class="promo__img">
+</div>
+{% endif %}
+
+<div class="promos_small"> 
+{% for promo in small_promos %}
+<div class="promo promo--{{ promo.color }}">
+<h3>
+  {{ promo.title }}
+</h3>
+<span>Акция действует до 
+  {{ promo.end_date }}
+</span>
+<a href="#" class=" btn--white_02">Подробнее ></a>
+<img src="{{ promo.image.url }}" alt="" class="promo__img">
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="hospital">
+     <div class="container">
+     <h2>Стационар</h2>
+
+<div class="hospital__features">
+ <div class="feature">
+<img src="{% static 'img/ickon1.png'  %}" alt="" class="feature__icon">
+<p>Отлично оборудованные операционные</p>
+ </div>
+ <div class="feature">
+<img src="{% static 'img/ickon1.png'  %}" alt="" class="feature__icon">
+<p>Полный контроль за состоянием пациентов</p>
+ </div>
+ <div class="feature">
+<img src="{% static 'img/ickon1.png'  %}" alt="" class="feature__icon">
+<p>Комфорт и забота после операции</p>
+ </div>
+</div>
+
+<div class="hospital__content">
+<div class="hospital__text">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum diam pretium risus, ultrices felis a. Adipiscing maecenas mattis ullamcorper magnis eget varius. At lobortis tristique mattis orci aenean. Pretium, posuere tristique id potenti ac. Ac praesent arcu vitae arcu. Velit ut et, leo, augue bibendum euismod in. Turpis massa, commodo vestibulum bibendum amet orci velit, risus. Semper mauris curabitur auctor id amet mauris lacus. Ut quis nisi, ac consequat sed massa egestas. Sed adipiscing scelerisque enim, id amet eget. Ipsum dui a bibendum quisque in.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum diam pretium risus, ultrices felis a. Adipiscing maecenas mattis ullamcorper magnis eget varius. At lobortis tristique mattis orci aenean. Pretium, posuere tristique id potenti ac. </p>
+<a href="#" class="btn-1">Подробнее ></a>
+</div>
+
+<img src="{% static 'img/hospital.png' %}" alt="">
+
+</div>
+     </div>
+</section>
+
+<section class="equipment">
+<div class="container">
+<h2>Наше Обородование</h2>
+
+<div class="equipment__list">
+  {% for equipment in equipments  %}
+<div class="equip-card">
+<img src="{{ equipment.image.url }}" alt="">
+<h3>
+  {{ equipment.name }}
+</h3>
+<ul>
+     {% for feature in equipment.features.all %}
+     <li>
+      {{ feature.text }}
+     </li>
+     {% endfor %}
+</ul>
+</div>
+  {% endfor %}
+
+</div>
+</div>
+</section>
+
+<section class="advantages-section">
+<div class="container">
+<h2>Наши преимущества</h2>
+
+<div class="advantages-wrapper">
+<ol class="advantages-list">
+     <li class="active">Профессионализм</li>
+     <li>Широкий спектр услуг</li>
+     <li>Современное оборудование</li>
+     <li>Высокий уровень обслуживания</li>
+     <li>Скорая помощь и служба помощи на дому</li>
+     <li>Терапевтические и хирургические стационары</li>
+     <li>Высокий уровень обслуживания</li>
+     <li>Скорая помощь и служба помощи на дому</li>
+     <li>Терапевтические и хирургические стационары</li>
+</ol>
+
+     <div class="advantages-content">
+          <h3 class="content-title">Профессионализм</h3>
+          <p class="content-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sodales praesent ut rhoncus fermentum at. Tellus quis aliquam pharetra eu eget morbi pharetra nunc facilisis. Urna laoreet in bibendum lorem consequat. Ac placerat posuere duis risus. Dignissim condimentum nulla nullam orci nulla. Mauris sed facilisis viverra et arcu tortor.</p>
+     <div class="content-body">
+          <div class="stats-block">
+               <div class="stat-item">
+                    <span class="stat-number">+2 800</span>
+                    <span class="stat-label">пациентов</span>
+               </div>
+               <div class="stat-item">
+                    <span class="stat-number">+2 800</span>
+                    <span class="stat-label">пациентов</span>
+               </div>
+               <div class="stat-item">
+                    <span class="stat-number">+2 800</span>
+                    <span class="stat-label">пациентов</span>
+               </div>
+               
+          </div>
+          <img src="{% static 'img/machine.png' %}" alt="" class="image-block">
+     </div>
+     
+          
+     
+     </div>
+</div>
+</div>
+</section>
+
+
+<section class="partner">
+<div class="container">
+<div class="partners-block">
+  <h2 class="partners-title">Наши партнеры</h2>
+  
+  <div class="partners-grid">
+    
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    
+    <div class="partner-item active">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+    <div class="partner-item">
+      <img src="{% static 'img/samsung.png' %}" alt="Samsung">
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+
+<section class="licenses">
+<div class="container">
+<h2>Наши лицензии</h2>
+
+<div class="licenses__list"> 
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+</div>
+</div>
+</section>
+
+{% include 'contacts_block.html' %}
+
+
+
+
+{% endblock %}

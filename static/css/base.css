@@ -1,0 +1,351 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+
+.back_home {
+    display: inline-block;
+    margin: 30px 0 20px;
+    padding: 6px 16px;
+    border: 1px solid #3BB96D;
+    border-radius: 20px;
+    color: #3BB96D;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.back_home:hover {
+    background: #3BB96D;
+    color: #fff;
+}
+}
+
+.container a {
+    text-decoration: none;
+    color: #0D233B;
+}
+
+
+.container_top {
+
+
+display: flex;
+margin-top: 24px;
+gap: 114px;
+align-items:  center;
+padding: 0 20px;
+
+}
+
+.container_nav{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+    margin-top: 18px;
+    
+}
+
+.header_top{
+    height: 40px;
+    font-size: 13px;
+}
+
+.header_right{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.menu1 {
+    display: flex;
+    
+    gap: 34px;
+    
+    white-space: nowrap;
+}
+.btn-1 {
+    background: #3BB96D;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 22px;
+    font-size: 13px;
+
+}
+
+
+.logo1{
+    display: flex;
+    width: 144px;
+    height: 38px;
+}
+
+.btn-2,.t1{
+    width: 231px;
+    height: 22px;
+    color: #686868;
+}
+
+
+
+
+
+
+.footer {
+    background-color: #219653; 
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+    padding: 50px 0 60px;
+}
+
+
+.footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+
+.footer__info {
+    display: flex;
+    flex-direction: column;
+    max-width: 240px;
+}
+
+.footer__logo {
+    max-width: 190px;
+    margin-bottom: 20px;
+    background: #FFFFFF;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.footer__label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7); 
+    margin: 12px 0 4px;
+}
+
+.footer__info p:not(.footer__label) {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+
+.footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+}
+
+
+.footer__col a.nav-link {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+    padding: 0;
+    background: none; 
+}
+
+
+.footer__col a {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+
+
+
+
+.call {
+    margin-top: 80px;
+    
+}
+
+.call__box {
+    position: relative;
+    display: flex;
+    background: black;
+    color: #fff;
+    border-radius: 40px;
+    padding: 40px 50px;
+    min-height: 260px;
+}
+
+
+
+.call__content h2 {
+    font-size: 28px;
+    
+}
+
+.call__text {
+    font-size: 13px;
+    
+}
+.call__content{
+    padding: 20px;
+}
+
+.call__fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.call__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.call__field input {
+    width: 190px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 20px;
+    background: #f1f5f9;
+    font-size: 12px;
+}
+
+.call__content button {
+    border: none;
+    cursor: pointer;
+    padding: 12px 40px;
+}
+
+.call__policy {
+    margin-top: 16px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.call__img {
+    position: absolute;
+    right: 0px;
+    bottom: 0;
+    height: 115%;
+    
+}
+
+.patients-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+  font-family: inherit;
+}
+
+.patients-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 28px;
+}
+
+.patients-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+
+.patient-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+
+.patient-card:hover {
+  transform: translateY(-4px);
+  border-color: #19944c;
+  box-shadow: 0 12px 24px rgba(25, 148, 76, 0.12);
+}
+
+.patient-card__badge {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: #eaf7ef;
+  color: #19944c;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.patient-card__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 12px;
+}
+
+.patient-card__text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #64748b;
+  margin: 0 0 24px;
+}
+
+.patient-card__link {
+  font-size: 15px;
+  font-weight: 600;
+  color: #19944c;
+}
+
+
+
+
+
+nav.nav-menu {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    padding: 15px 0;
+    margin-top: 15px;
+   
+}
+
+nav.nav-menu a.nav-link {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222222;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+
+nav.nav-menu a.nav-link:hover {
+    background-color: #27A857; 
+    color: #FFFFFF;            
+}
+

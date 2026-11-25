@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="oms_hero">
+    <div class="container black_cont">
+        <div class="hero_text">
+            <h1>Лечение по ОМС</h1>
+            <p>Лечение в частной клинике не всегда стоит больших денег. В наших клиниках жители разных регионов России могут получить услуги по полису обязательного медицинского страхования (ОМС).</p>
+            <a href="#oms-form" class="btn-09">Как получить лечение</a>
+        </div>
+        <img src="{% static 'img/group01.png' %}" alt="" class="group">
+    </div>
+</section>
+
+<section class="oms_steps">
+    <div class="container">
+        <h2>Как получить лечение?</h2>
+        <div class="oms_steps_list">
+            <div class="oms_step">
+                <span class="step_num">1</span>
+                <img src="{% static 'img/step1.png' %}" alt="">
+                <p>Узнайте, входит ли интересующее вас лечение в программу для вашего региона</p>
+            </div>
+
+            <div class="oms_step">
+                <span class="step_num">2</span>
+                <img src="{% static 'img/step1.png' %}" alt="">
+                <p>Подготовьте необходимые документы и отправьте заявку на лечение.</p>
+            </div>
+            <div class="oms_step">
+                <span class="step_num">3</span>
+                <img src="{% static 'img/step1.png' %}" alt="">
+                <p>В течение 3-х рабочих дней специалист отдела ОМС свяжется с вами по указанному вами номеру телефона</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oms_dirs">
+    <div class="container">
+        <h2>Все направления лечения по ОМС</h2> 
+        <div class="oms_dirs_list">
+            {% for direction in directions %}
+            <div class="oms_dir">
+                <h3>{{ direction.name }}</h3>
+                <p>{{ direction.description }}</p>
+                <a href="{% url 'direction_detail' direction.slug %}">Подробнее</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+<section class="oms_video">
+  <div class="container">
+    <div class="oms_video__wrapper">
+      <img src="{% static 'img/oms_video.png' %}" alt="Видео о системе ОМС">
+      <button class="oms_play" type="button" aria-label="Запустить видео">▶</button>
+    </div>
+  </div>
+</section>
+
+<section class="oms_form" id="oms-form">
+  <div class="container">
+    <h2>Заявка на лечение по ОМС</h2>
+    <p class="subtitle">Заполните поля ниже и прикрепите документ, чтобы отправить заявку</p>
+
+    {{ form.errors }}
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+   
+      <div class="row-4">
+        <div class="field">
+          <label>Ваше ФИО</label>
+          {{ form.full_name }}
+        </div>
+
+        <div class="field">
+          <label>Дата рождения</label>
+          {{ form.date_birthday }}
+        </div>
+
+        <div class="field">
+          <label>E-mail</label>
+          {{ form.email }}
+        </div>
+
+        <div class="field">
+          <label>Номер телефона</label>
+          {{ form.phone_number }}
+        </div>
+      </div>
+
+      
+      <div class="row-4">
+        <div class="field">
+          <label>Профиль</label>
+          {{ form.profile }}
+        </div>
+
+        <div class="field">
+          <label>Медицинская услуга</label>
+          {{ form.service }}
+        </div>
+
+        <div class="field">
+          <label>Регион</label>
+          {{ form.region }}
+        </div>
+
+        <div class="field">
+          <label>ФИО и телефон вашего врача</label>
+          {{ form.representative }}
+        </div>
+      </div>
+
+      
+      <div class="row-2">
+        <div class="field">
+          <label>Причина обращения</label>
+          {{ form.reason }}
+        </div>
+
+        <div class="field">
+          <label>Откуда вы узнали о нас?</label>
+          {{ form.source }}
+        </div>
+      </div>
+
+      
+      <div class="file-block">
+        <p>Не забудьте прикрепить выписку из медицинской документации или результаты исследований</p>
+        <label class="file-btn">
+          📎 Прикрепить документы
+          {{ form.document }}
+        </label>
+      </div>
+
+      
+      {% if form.agree %}
+        <div class="agree-block">
+          <label>
+            {{ form.agree }} Я согласен с политикой конфиденциальности и обработкой персональных данных
+          </label>
+        </div>
+      {% endif %}
+
+      <button type="submit" class="btn-1">Оставить заявку</button>
+    </form>
+  </div>
+</section>
+
+
+
+
+{% endblock %}

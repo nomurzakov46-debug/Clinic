@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="promos_page">
+    <div class="container">
+        <h1>Наши акции</h1>
+        <div class="promos_all">
+            {% for promo in promotions %}
+                <div class="an_promo an_promo--{{ promo.color }} {% if promo.is_big %}an_promo--big{% else %}an_promo--small{% endif %}">
+                    <div class="an_promo__text">
+                        <h3>{{ promo.title }}</h3>
+                        {% if promo.is_big %}<p>{{ promo.text }}</p>{% endif %}
+                        <span>Акция действует до</span>
+                        <strong>{{ promo.end_date|date:"d.m.Y" }}</strong>
+                        <a href="#" class="btn-1 btn--white">Подробнее ></a>
+                    </div>
+                    <img src="{{ promo.image.url }}" alt="{{ promo.title }}" class="an_promo__img">
+                </div>
+            {% empty %}
+                <p>Акций пока нет.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="licenses">
+<div class="container">
+<h2>Наши лицензии</h2>
+
+<div class="licenses__list"> 
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+<img src="{% static 'img/license1.png'  %}" alt="">
+</div>
+</div>
+</section>
+
+{% include 'callback_block.html' %}
+{% endblock %}
