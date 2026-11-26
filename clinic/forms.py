@@ -19,7 +19,7 @@ def validate_phone(phone):
 class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = ['full_name','phone','direction']
+        fields = ['full_name','phone','direction','doctor']
     def clean_phone(self):
         return validate_phone(self.cleaned_data['phone'])
 

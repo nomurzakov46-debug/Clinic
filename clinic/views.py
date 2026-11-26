@@ -26,14 +26,23 @@ def doctor_detail(request,pk):
     return render(request,'doctor_detail.html',{'doctor':doctor})
 
 def appointment_create(request):
+    directions = Direction.objects.all()
+    doctors = Doctor.objects.all()  
+
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request,'appointment.html',{'success':True})
+            return render(request, 'appointment.html', {'success': True})
     else:
         form = AppointmentForm()
-    return render(request, 'appointment.html', {'form': form})
+
+    return render(request, 'appointment.html', {
+        'form': form,
+        'directions': directions, 
+        'doctors': doctors,        
+    })
+
 
 
 def callback_create(request):

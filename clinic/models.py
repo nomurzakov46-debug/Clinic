@@ -91,8 +91,8 @@ class EquipmentFeature(models.Model):
 class Appointment(models.Model):
     full_name = models.CharField(max_length=200)
     phone = models.CharField(max_length=20)
-    direction = models.ForeignKey(Direction,on_delete=models.SET_NULL,null=True,blank=True)
-    doctor = models.ForeignKey(Doctor,on_delete=models.SET_NULL,null=True,blank=True)
+    direction = models.ForeignKey(Direction,on_delete=models.SET_NULL,null=True,blank=True,verbose_name='Направление"')
+    doctor = models.ForeignKey(Doctor,on_delete=models.SET_NULL,null=True,blank=True,verbose_name='Врачи')
     created_at = models.DateTimeField(auto_now_add=True)
     is_processed = models.BooleanField(default=False)
 

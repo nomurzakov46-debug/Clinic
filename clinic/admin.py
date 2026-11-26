@@ -31,7 +31,9 @@ class EquipmentAdmin(admin.ModelAdmin):
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ('full_name','phone','direction','created_at','is_processed',)
+    list_display = ('full_name','phone','direction','created_at','is_processed','doctor')
+    list_filter = ('doctor','direction')
+    search_fields = ('full_name','phone')
 
 @admin.register(CallRequest)
 class CallRequestAdmin(admin.ModelAdmin):

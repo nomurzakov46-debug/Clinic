@@ -1,52 +1,59 @@
-.banner{
-    
-    
-    background: linear-gradient(180deg, #3BB96D 0%, #279D5A 100%);
+.banner {
+    background-color: #27A857;
+    padding: 60px 0;
+    margin: 30px 0;
+    font-family: 'Montserrat', 'Arial', sans-serif; 
+}
 
-    .banner__inner{
-        display: flex;
-        gap: 65px;
-        margin-top: 40px;
-        
-        height: 350px;
-        .home_left1{
-            display: flex;
-            margin-top: 40px;
-            flex-direction: column;
-           align-items: flex-start;
-           gap: 26px;
-           max-width: 480px;
-           color: #fff;
-
-            h1{
-            font-size: 40px;
-            }
-            .btn--white {
-    background-color:  #fff;
-   color: #3BB96D;
+.banner__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
 }
 
 
-
-
-        }
-
-        .home_right1{
-        display: flex;
-        align-items: center;
-       
-        .image01{
-            height: 250px;
-            width: 580px;
-        }
-      
-        
-    }
-    }
-
-
-    
+.home_left1 {
+    max-width: 560px;
 }
+
+.home_left1 h1 {
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.home_left1 p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #f0f0f0;
+}
+
+.btn--white {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #27A857;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.home_right1 {
+    flex-shrink: 0;
+}
+
+.image01 {
+    max-width: 480px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 
 
 .banner2{
@@ -2146,4 +2153,28 @@
     display: flex;
     align-items: center;
     gap: 24px;
+}
+
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 40px 0;
+}
+
+.page-link {
+    padding: 10px 16px;
+    border: 1px solid #3BB96D;
+    border-radius: 10px;
+    color: #3BB96D;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.page-link.active,
+.page-link:hover {
+    background-color: #3BB96D;
+    color: #ffffff;
 }
